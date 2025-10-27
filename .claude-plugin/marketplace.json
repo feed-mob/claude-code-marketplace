@@ -7,7 +7,7 @@
   },
   "plugins": [
     {
-      "name": "smart-commit",
+      "name": "easy-commit",
       "source": "./plugins/easy-commit",
       "description": "A plugin to help you write better git commit messages",
       "version": "0.0.1",
