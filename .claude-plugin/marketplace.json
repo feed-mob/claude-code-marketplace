@@ -18,6 +18,19 @@
       "commands": [
         "./commands/smart-commit.md"
       ]
+    },
+    {
+      "name": "test-generator",
+      "source": "./plugins/test-generator",
+      "description": "A plugin agent that automatically generates high-quality test cases for code changes and new features",
+      "version": "1.0.0",
+      "author": {
+        "name": "Steven Wu",
+        "email": "wuqi0509@gmail.com"
+      },
+      "agents": [
+        "./agents/test-generator.md"
+      ]
     }
   ]
 }
