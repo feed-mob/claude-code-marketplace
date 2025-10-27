@@ -1,0 +1,15 @@
+{
+  "name": "feedmob-claude-plugins",
+  "owner": {
+    "name": "FeedMob Inc.",
+    "email": "dev@feedmob.com",
+    "url": "https://feedmob.com"
+  },
+  "plugins": [
+    {
+      "name": "smart-commit",
+      "source": "./plugins/smart-commit",
+      "description": "A plugin to help you write better git commit messages"
+    }
+  ]
+}
