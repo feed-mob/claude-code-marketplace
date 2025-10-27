@@ -1,0 +1,9 @@
+{
+  "name": "smart-commit",
+  "description": "A plugin to help you write better git commit messages",
+  "version": "0.0.1",
+  "author": {
+    "name": "Steven Wu",
+    "email": "steven@feedmob.com"
+  }
+}
