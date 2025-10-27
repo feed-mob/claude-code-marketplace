@@ -7,9 +7,17 @@
   },
   "plugins": [
     {
-      "name": "smart-commit",
-      "source": "./plugins/smart-commit",
-      "description": "A plugin to help you write better git commit messages"
+      "name": "easy-commit",
+      "source": "./plugins/easy-commit",
+      "description": "A plugin to help you write better git commit messages",
+      "version": "0.0.1",
+      "author": {
+        "name": "Steven Wu",
+        "email": "wuqi0509@gmail.com"
+      },
+      "commands": [
+        "./commands/smart-commit.md"
+      ]
     }
   ]
 }
