@@ -31,6 +31,19 @@
       "agents": [
         "./agents/test-generator.md"
       ]
+    },
+    {
+      "name": "csv-url-parser",
+      "source": "./plugins/csv-url-parser",
+      "description": "A plugin skill that parses URLs in CSV files and extracts query parameters as new columns",
+      "version": "1.0.0",
+      "author": {
+        "name": "Steven Wu",
+        "email": "wuqi0509@gmail.com"
+      },
+      "skills": [
+        "./skills/SKILL.md"
+      ]
     }
   ]
 }
