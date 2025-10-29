@@ -72,34 +72,88 @@ Custom slash commands for specific workflows:
 
 ### Installation
 
-1. **Clone the marketplace**:
+#### Method 1: Add as Marketplace (Recommended)
+
+Add the entire FeedMob marketplace to Claude Code:
+
+```bash
+/plugin marketplace add git@github.com:feed-mob/claude-code-marketplace.git
+```
+
+Or using HTTPS:
+```bash
+/plugin marketplace add https://github.com/feed-mob/claude-code-marketplace.git
+```
+
+#### Method 2: Add Individual Plugins
+
+You can also install individual plugins directly:
+
+```bash
+# Install CSV URL Parser
+/plugin install csv-url-parser@feedmob-marketplace
+
+# Install Test Generator
+/plugin install test-generator@feedmob-marketplace
+
+# Install Easy Commit
+/plugin install easy-commit@feedmob-marketplace
+```
+
+#### Method 3: Browse and Install Interactively
+
+1. **Add the marketplace**:
    ```bash
-   git clone https://github.com/feedmob/claude-code-marketplace.git
-   cd claude-code-marketplace
+   /plugin marketplace add git@github.com:feed-mob/claude-code-marketplace.git
    ```
 
-2. **Install individual plugins**:
-   Each plugin can be installed independently by copying the plugin directory to your Claude Code plugins folder.
+2. **Browse available plugins**:
+   ```bash
+   /plugin
+   ```
 
-3. **Plugin Structure**:
+3. **Install from the interactive interface**:
+   Select the plugins you want to install from the marketplace.
+
+### Verification
+
+After adding the marketplace, verify the installation:
+
+1. **List marketplaces**:
+   ```bash
+   /plugin marketplace list
    ```
-   your-claude-plugins/
-   ├── csv-url-parser/
-   │   ├── .claude-plugin/
-   │   │   └── plugin.json
-   │   ├── skills/
-   │   └── README.md
-   ├── test-generator/
-   │   ├── .claude-plugin/
-   │   │   └── plugin.json
-   │   ├── agents/
-   │   └── README.md
-   └── easy-commit/
-       ├── .claude-plugin/
-       │   └── plugin.json
-       ├── commands/
-       └── README.md
+
+2. **Check available plugins**:
+   ```bash
+   /plugin
    ```
+
+3. **Test a plugin**:
+   Try using one of the installed plugins to ensure everything works correctly.
+
+### Plugin Structure
+
+Once installed, plugins will be available in your Claude Code environment:
+
+```
+your-claude-plugins/
+├── csv-url-parser/
+│   ├── .claude-plugin/
+│   │   └── plugin.json
+│   ├── skills/
+│   └── README.md
+├── test-generator/
+│   ├── .claude-plugin/
+│   │   └── plugin.json
+│   ├── agents/
+│   └── README.md
+└── easy-commit/
+    ├── .claude-plugin/
+    │   └── plugin.json
+    ├── commands/
+    └── README.md
+```
 
 ### Usage
 
@@ -108,6 +162,63 @@ Once installed, plugins are automatically available in Claude Code:
 - **Agents**: Use `/agents` to see available agents or let Claude invoke them automatically
 - **Skills**: Mention relevant keywords to trigger skills automatically
 - **Commands**: Use slash commands like `/smart-commit` for specific actions
+
+## 📦 Marketplace Configuration
+
+This repository serves as a Claude Code plugin marketplace. To enable marketplace functionality, a `.claude-plugin/marketplace.json` file is required at the repository root.
+
+### Marketplace Structure
+
+The marketplace configuration follows the [Claude Code Plugin Marketplaces](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces#add-and-use-marketplaces) specification:
+
+```json
+{
+  "name": "feedmob-marketplace",
+  "owner": {
+    "name": "FeedMob Team",
+    "email": "dev@feedmob.com"
+  },
+  "metadata": {
+    "description": "FeedMob's curated collection of Claude Code plugins for enhanced development workflows",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "csv-url-parser",
+      "source": "./plugins/csv-url-parser",
+      "description": "Parse URLs in CSV files and extract query parameters as new columns",
+      "version": "1.0.0",
+      "author": {
+        "name": "FeedMob Team"
+      },
+      "keywords": ["csv", "url", "parsing", "data-processing"],
+      "category": "data-processing"
+    },
+    {
+      "name": "test-generator",
+      "source": "./plugins/test-generator",
+      "description": "Automatically generate high-quality test cases for code changes",
+      "version": "1.0.0",
+      "author": {
+        "name": "FeedMob Team"
+      },
+      "keywords": ["testing", "test-generation", "automation", "quality"],
+      "category": "testing"
+    },
+    {
+      "name": "easy-commit",
+      "source": "./plugins/easy-commit",
+      "description": "Streamlined git commit creation with intelligent change analysis",
+      "version": "1.0.0",
+      "author": {
+        "name": "FeedMob Team"
+      },
+      "keywords": ["git", "commit", "workflow", "automation"],
+      "category": "productivity"
+    }
+  ]
+}
+```
 
 ## 🔧 Plugin Development
 
@@ -185,11 +296,67 @@ FeedMob is committed to enhancing developer productivity through innovative tool
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 🔧 Troubleshooting
+
+### Marketplace Installation Issues
+
+#### Marketplace Not Loading
+If you can't add the marketplace or see plugins from it:
+
+1. **Verify repository access**:
+   ```bash
+   # Test SSH access
+   ssh -T git@github.com
+
+   # Or test HTTPS access
+   curl -I https://github.com/feed-mob/claude-code-marketplace
+   ```
+
+2. **Check marketplace file exists**:
+   Ensure `.claude-plugin/marketplace.json` exists in the repository root
+
+3. **Validate JSON syntax**:
+   ```bash
+   claude plugin validate .
+   ```
+
+#### Plugin Installation Failures
+If the marketplace appears but plugin installation fails:
+
+1. **Check plugin sources**:
+   Verify that plugin directories contain required files
+
+2. **Test individual plugins**:
+   Try installing plugins one by one to identify issues
+
+3. **Check permissions**:
+   Ensure you have access to the repository
+
+### Common Commands
+
+```bash
+# List all marketplaces
+/plugin marketplace list
+
+# Update marketplace metadata
+/plugin marketplace update feedmob-marketplace
+
+# Remove marketplace
+/plugin marketplace remove feedmob-marketplace
+
+# List available plugins
+/plugin
+
+# Install specific plugin
+/plugin install csv-url-parser@feedmob-marketplace
+```
+
 ## 🤝 Support
 
 - **Issues**: Report bugs or request features via [GitHub Issues](https://github.com/feedmob/claude-code-marketplace/issues)
 - **Discussions**: Join community discussions in [GitHub Discussions](https://github.com/feedmob/claude-code-marketplace/discussions)
 - **Documentation**: Check individual plugin README files for specific usage instructions
+- **Claude Code Docs**: [Plugin Marketplaces Reference](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces#add-and-use-marketplaces)
 
 ---
 
