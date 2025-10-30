@@ -1,0 +1,12 @@
+{
+  "description": "Send a system notification after successful git commit operations invoked via Ruby.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "ruby ${CLAUDE_PLUGIN_ROOT}/hooks/notify_commit.rb",
+        "timeout": 30
+      }
+    ]
+  }
+}

@@ -13,10 +13,13 @@
       "version": "0.0.1",
       "author": {
         "name": "Steven Wu",
-        "email": "wuqi0509@gmail.com"
+        "email": "steven@feedmob.com"
       },
       "commands": [
         "./commands/smart-commit.md"
+      ],
+      "hooks": [
+        "./hooks/hooks.json"
       ]
     },
     {
@@ -26,7 +29,7 @@
       "version": "1.0.0",
       "author": {
         "name": "Steven Wu",
-        "email": "wuqi0509@gmail.com"
+        "email": "steven@feedmob.com"
       },
       "agents": [
         "./agents/test-generator.md"
@@ -39,7 +42,7 @@
       "version": "1.0.0",
       "author": {
         "name": "Steven Wu",
-        "email": "wuqi0509@gmail.com"
+        "email": "steven@feedmob.com"
       },
       "skills": [
         "./skills/SKILL.md"
