@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "appsamurai": {
+      "command": "npx",
+      "args": [ "-y", "@feedmob/appsamurai-reporting" ],
+      "env": {
+       "APPSAMURAI_API_KEY": "${APPSAMURAI_API_KEY}"
+      }
+    }
+  }
+}

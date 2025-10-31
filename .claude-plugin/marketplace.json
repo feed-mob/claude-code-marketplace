@@ -47,6 +47,19 @@
       "skills": [
         "./skills/SKILL.md"
       ]
+    },
+    {
+      "name": "fm-mcp-servers",
+      "source": "./plugins/fm-mcp-servers",
+      "description": "A plugin that provides MCP servers for FeedMob",
+      "version": "1.0.0",
+      "author": {
+        "name": "Steven Wu",
+        "email": "steven@feedmob.com"
+      },
+      "mcpServers": [
+        "./appsamurai-reporting/mcp.json"
+      ]
     }
   ]
 }
