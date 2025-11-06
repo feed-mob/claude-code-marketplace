@@ -51,6 +51,26 @@ A curated collection of Claude Code plugins designed to enhance development work
 
 [View Plugin Details →](plugins/easy-commit/commands/smart-commit.md)
 
+### 📊 PPT Generator
+**Type**: Agent Skill
+**Description**: Create and edit PowerPoint presentations using Python and python-pptx library.
+
+**Features**:
+- 🎯 Easy creation of PowerPoint presentations from simple commands
+- 📊 Support for command-line and JSON-based slide definitions
+- 🖼️ Image insertion with custom positioning
+- 📝 Multiple slide types (title, content, blank)
+- ✅ Standard .pptx format compatible with all major presentation software
+
+**Use Cases**:
+- Meeting presentations
+- Project proposals
+- Training materials
+- Business reports
+- Quick slide deck creation
+
+[View Plugin Details →](plugins/ppt-generator/README.md)
+
 ## 📋 Plugin Types
 
 This marketplace includes different types of Claude Code plugins:
@@ -63,6 +83,7 @@ Specialized subagents that Claude can invoke automatically based on context:
 ### 🛠️ Skills
 Model-invoked capabilities that extend Claude's functionality:
 - **CSV URL Parser Skill**: Extracts URL parameters from CSV data
+- **PPT Generator Skill**: Creates and edits PowerPoint presentations
 
 ### ⚡ Commands
 Custom slash commands for specific workflows:
@@ -214,6 +235,17 @@ The marketplace configuration follows the [Claude Code Plugin Marketplaces](http
         "name": "FeedMob Team"
       },
       "keywords": ["git", "commit", "workflow", "automation"],
+      "category": "productivity"
+    },
+    {
+      "name": "ppt-generator",
+      "source": "./plugins/ppt-generator",
+      "description": "Create and edit PowerPoint presentations using Python and python-pptx library",
+      "version": "1.0.0",
+      "author": {
+        "name": "FeedMob Team"
+      },
+      "keywords": ["ppt", "powerpoint", "presentation", "slides", "office"],
       "category": "productivity"
     }
   ]
