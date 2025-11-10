@@ -2,7 +2,6 @@
 name: ppt-generator
 description: Create professional PowerPoint presentations with enhanced styling, themes, and layout options. Use when you need to generate PPT files with modern design elements.
 allowed-tools: Read, Write, Bash
-dependencies: python-pptx>=0.6.21
 ---
 
 # PPT Generator

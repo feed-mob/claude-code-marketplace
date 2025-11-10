@@ -154,21 +154,37 @@ def add_logo_to_slide(slide, logo_path: str, position: str = 'bottom_right'):
     if not Path(logo_path).exists():
         return None
 
-    # Define logo positions (left, top in inches)
+    # Determine slide dimensions (fall back to default 10x7.5 in if unavailable)
+    try:
+        presentation = slide.part.package.presentation_part.presentation
+        slide_width = presentation.slide_width
+        slide_height = presentation.slide_height
+    except AttributeError:
+        slide_width = Inches(10)
+        slide_height = Inches(7.5)
+
+    logo_width = Inches(1)
+    logo_height = Inches(1)
+    margin = Inches(0.3)
+
+    max_left = max(margin, slide_width - logo_width - margin)
+    max_top = max(margin, slide_height - logo_height - margin)
+
+    # Define logo positions (left, top in EMUs)
     positions = {
-        'top_left': (0.2, 0.2),
-        'top_right': (8.8, 0.2),
-        'bottom_left': (0.2, 6.8),
-        'bottom_right': (8.8, 6.8),
-        'center': (4.25, 3.25)
+        'top_left': (margin, margin),
+        'top_right': (max_left, margin),
+        'bottom_left': (margin, max_top),
+        'bottom_right': (max_left, max_top),
+        'center': ((slide_width - logo_width) / 2, (slide_height - logo_height) / 2)
     }
 
     left, top = positions.get(position, positions['bottom_right'])
 
     # Add logo with small size (1x1 inch)
     try:
-        logo = slide.shapes.add_picture(logo_path, Inches(left), Inches(top),
-                                       Inches(1), Inches(1))
+        logo = slide.shapes.add_picture(logo_path, left, top,
+                                       logo_width, logo_height)
 
         # Set transparency for subtle appearance
         try:
