@@ -117,6 +117,9 @@ You can also install individual plugins directly:
 # Install Test Generator
 /plugin install test-generator@feedmob-marketplace
 
+# Install PPT Generator
+/plugin install ppt-generator@feedmob-marketplace
+
 # Install Easy Commit
 /plugin install easy-commit@feedmob-marketplace
 ```
@@ -168,6 +171,13 @@ your-claude-plugins/
 │   ├── .claude-plugin/
 │   │   └── plugin.json
 │   ├── agents/
+│   └── README.md
+├── ppt-generator/
+│   ├── .claude-plugin/
+│   │   └── plugin.json
+│   ├── skills/
+│   ├── assets/
+│   ├── scripts/
 │   └── README.md
 └── easy-commit/
     ├── .claude-plugin/
