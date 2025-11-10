@@ -47,6 +47,19 @@
       "skills": [
         "./skills/SKILL.md"
       ]
+    },
+    {
+      "name": "ppt-generator",
+      "source": "./plugins/ppt-generator",
+      "description": "Create professional PowerPoint presentations with enhanced styling, themes, and layout options",
+      "version": "2.0.0",
+      "author": {
+        "name": "Steven Wu",
+        "email": "steven@feedmob.com"
+      },
+      "skills": [
+        "./skills/SKILL.md"
+      ]
     }
   ]
 }
