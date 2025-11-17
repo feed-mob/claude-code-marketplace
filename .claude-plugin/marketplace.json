@@ -60,6 +60,20 @@
       "skills": [
         "./skills/SKILL.md"
       ]
+    },
+    {
+      "name": "direct-spend-visualizer",
+      "source": "./plugins/direct-spend-visualizer",
+      "description": "Visualize FeedMob direct spend data as ASCII line charts",
+      "version": "1.0.0",
+      "author": {
+        "name": "Richard Hao",
+        "email": "richard@feedmob.com"
+      },
+      "skills": [
+        "./skills/SKILL.md"
+      ],
+      "mcpServers": "./.mcp.json"
     }
   ]
 }
