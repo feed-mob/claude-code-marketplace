@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "feedmob": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@feedmob/feedmob-reporting"
+      ],
+      "env": {
+        "FEEDMOB_KEY": "${FEEDMOB_KEY}",
+        "FEEDMOB_SECRET": "${FEEDMOB_SECRET}",
+        "FEEDMOB_API_BASE": "${FEEDMOB_API_BASE}"
+      }
+    }
+  }
+}

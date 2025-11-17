@@ -71,6 +71,31 @@ A curated collection of Claude Code plugins designed to enhance development work
 
 [View Plugin Details →](plugins/ppt-generator/README.md)
 
+### 📈 Direct Spend Visualizer
+**Type**: Agent Skill
+**Description**: Visualize FeedMob direct spend data as ASCII line charts directly in your terminal.
+
+**Features**:
+- 📊 ASCII line chart generation for spend trends
+- 💰 Dual metrics display (net spend and gross spend)
+- 📅 Custom date range analysis
+- 🔢 Detailed data tables with daily breakdowns
+- 🎯 Multi-campaign support for multiple click URL IDs
+- 💵 USD currency formatting with proper $ symbols
+
+**Use Cases**:
+- Campaign spend analysis
+- Budget tracking and monitoring
+- Spend trend visualization
+- Multi-campaign comparison
+- Quick terminal-based reporting
+
+**Requirements**:
+- Python 3.6+
+- FeedMob MCP Server configured with API credentials
+
+[View Plugin Details →](plugins/direct-spend-visualizer/README.md)
+
 ## 📋 Plugin Types
 
 This marketplace includes different types of Claude Code plugins:
@@ -84,6 +109,7 @@ Specialized subagents that Claude can invoke automatically based on context:
 Model-invoked capabilities that extend Claude's functionality:
 - **CSV URL Parser Skill**: Extracts URL parameters from CSV data
 - **PPT Generator Skill**: Creates and edits PowerPoint presentations
+- **Direct Spend Visualizer Skill**: Visualizes FeedMob spend data as ASCII charts
 
 ### ⚡ Commands
 Custom slash commands for specific workflows:
@@ -119,6 +145,9 @@ You can also install individual plugins directly:
 
 # Install PPT Generator
 /plugin install ppt-generator@feedmob-marketplace
+
+# Install Direct Spend Visualizer
+/plugin install direct-spend-visualizer@feedmob-marketplace
 
 # Install Easy Commit
 /plugin install easy-commit@feedmob-marketplace
@@ -178,6 +207,13 @@ your-claude-plugins/
 │   ├── skills/
 │   ├── assets/
 │   ├── scripts/
+│   └── README.md
+├── direct-spend-visualizer/
+│   ├── .claude-plugin/
+│   │   └── plugin.json
+│   ├── skills/
+│   ├── scripts/
+│   ├── .mcp.json
 │   └── README.md
 └── easy-commit/
     ├── .claude-plugin/
@@ -257,6 +293,17 @@ The marketplace configuration follows the [Claude Code Plugin Marketplaces](http
       },
       "keywords": ["ppt", "powerpoint", "presentation", "slides", "office"],
       "category": "productivity"
+    },
+    {
+      "name": "direct-spend-visualizer",
+      "source": "./plugins/direct-spend-visualizer",
+      "description": "Visualize FeedMob direct spend data as ASCII line charts",
+      "version": "1.0.0",
+      "author": {
+        "name": "FeedMob Team"
+      },
+      "keywords": ["visualization", "charts", "spend", "analytics", "feedmob"],
+      "category": "data-visualization"
     }
   ]
 }
