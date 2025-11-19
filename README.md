@@ -98,7 +98,7 @@ A curated collection of Claude Code plugins designed to enhance development work
 
 ### 📰 AI News Crawler
 **Type**: Agent Skill
-**Description**: Crawl the latest AI news from multiple sources, deduplicate, and output a single time-stamped JSON file with 10 items, all summarized in Chinese. Triggered when the request contains "去吧小飞机".
+**Description**: Crawl the latest AI news from multiple sources, deduplicate, and output a single time-stamped JSON file with 10 items, all summarized in Chinese. Triggered when the request contains "watching news!".
 
 **Features**:
 - 🗂️ Multi-source aggregation with strict deduplication by `url` and `title`
