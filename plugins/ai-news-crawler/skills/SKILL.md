@@ -1,46 +1,45 @@
 ---
-name: AI新闻爬取器
-description: 触发词"去吧小飞机"；仅在当前目录创建时间命名的.json，抓取按时间降序的10条AI相关新闻并输出中文概要
+name: ai-news-crawler
+description: Trigger phrase \"watching news!\"; Create a JSON file named with the current timestamp only in the current directory, crawl 10 AI-related news in descending order of time and output Chinese summaries
 ---
 
-# 目的
-从多个网站抓取最新AI相关新闻，合并去重并按时间降序选取10条，摘要统一为中文，写入JSON文件。
+# Purpose
+Crawl the latest AI-related news from multiple websites, merge and deduplicate them, select 10 in descending order of time, unify summaries into Chinese, and write to a JSON file.
 
-# 何时触发
-当请求包含"去吧小飞机"。
+# When to Trigger
+When the request contains the phrase "Go, Little Plane".
 
-# 输入
-- optional keywords?: 主题关键词（可选）
-- optional time_window?: 时间窗口（默认144h）
+# Inputs
+- optional keywords?: Topic keywords (optional)
+- optional time_window?: Time window (default: 144h)
 
-# 输出
+# Output
 - news_json_file_only
 
-# 约束
-- 仅创建一个文件：`<YYYYMMDD_HHMMSS>.json`，位置为当前工作目录；不在对话中输出任何文本或路径。
-- 每条记录字段：`title`、`source`、`url`、`published_at`(ISO8601)、`summary_zh`、`language`(`zh`/`en`/`mixed`)。
-- 数量固定为10条，按`published_at`降序；严格去重（以`url`与`title`作为键）。
-- 英文内容的摘要必须为中文；保留原文语言标识于`language`。
-- 避免抓取付费墙与需登录的页面；不包含广告与软文；不写入敏感信息或密钥。
-- 若缺失发布时间，使用页面显式时间；无法获取时剔除该条或标注`published_at: null`并降权，不猜测。
+# Constraints
+- Create only one file: <YYYYMMDD_HHMMSS>.json in the current working directory; Do not output any text or paths in the conversation.
+- Each record must include fields: title, source, url, published_at (ISO8601), summary_zh, language (zh/en/mixed).
+- Fixed quantity: 10 entries, sorted in descending order of published_at; Strict deduplication (using url and title as keys).
+- Summaries for English content must be in Chinese; Retain the original language identifier in the language field.
+- Avoid crawling paywalled or login-required pages; Exclude ads and sponsored content; Do not write sensitive information or keys.
+- If the publication time is missing, use the explicit time on the page; If unavailable, exclude the entry or mark published_at: null and lower its priority—do not guess.
 
-# 源站候选
-- The Verge / AI标签
-- TechCrunch / AI标签
-- 量子位 / AI栏目
-- 36氪 / 人工智能标签
-- 官方公告 / Anthropic、Google AI Blog（选最新公告）
+# Candidate Sources
+- The Verge / AI tag
+- TechCrunch / AI tag
+- Liangziwei (Quantum Bits) / AI section
+- 36Kr / Artificial Intelligence tag
+- Official Announcements / Anthropic, Google AI Blog (select latest announcements)
 
-# 步骤
-1 确定`time_window`与`keywords`（若提供）。
-2 遍历源站候选，抓取最近内容列表，解析`title/url/published_at`与正文摘要。
-3 将英文摘要压缩并翻译为中文，保持中立与信息密度。
-4 归一化时间为ISO8601，合并列表并按`url/title`去重。
-5 按`published_at`降序排序，选取前10条；写入`<YYYYMMDD_HHMMSS>.json`为JSON数组。
-6 不在对话中输出任何文本；仅创建文件。
+# Steps
+1. Confirm time_window and keywords (if provided).
+2. Iterate through candidate sources, crawl recent content lists, and parse title/url/published_at and body summaries.
+3. Condense and translate English summaries into Chinese, maintaining neutrality and information density.
+4. Normalize timestamps to ISO8601, merge lists, and deduplicate by url/title.
+5. Sort in descending order of published_at, select the top 10 entries; Write to <YYYYMMDD_HHMMSS>.json as a JSON array.
+6. Do not output any text in the conversation; Only create the file.
 
-# 输出示例（结构）
-```json
+# Output Example (Structure)
 [
   {
     "title": "示例标题",

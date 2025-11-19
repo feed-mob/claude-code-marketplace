@@ -76,9 +76,9 @@
       "mcpServers": "./.mcp.json"
     },
     {
-      "name": "AI新闻爬取器",
+      "name": "ai-news-crawler",
       "source": "./plugins/ai-news-crawler",
-      "description": "触发词“去吧小飞机”；仅在当前目录创建时间命名的.json，抓取按时间降序的10条AI相关新闻并输出中文概要",
+      "description": "Trigger phrase \"watching news!\"; create a .json file named by creation time only in the current directory, fetch the 10 most recent AI news articles in descending order by time, and output a Chinese summary.",
       "version": "1.0.0",
       "author": {
         "name": "zijie",
