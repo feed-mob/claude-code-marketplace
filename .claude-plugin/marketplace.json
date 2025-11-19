@@ -74,6 +74,19 @@
         "./skills/SKILL.md"
       ],
       "mcpServers": "./.mcp.json"
+    },
+    {
+      "name": "AI新闻爬取器",
+      "source": "./plugins/ai-news-crawler",
+      "description": "触发词“去吧小飞机”；仅在当前目录创建时间命名的.json，抓取按时间降序的10条AI相关新闻并输出中文概要",
+      "version": "1.0.0",
+      "author": {
+        "name": "zijie",
+        "email": "zijie@feedmob.com"
+      },
+      "skills": [
+        "./skills/SKILL.md"
+      ]
     }
   ]
 }

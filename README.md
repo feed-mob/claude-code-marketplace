@@ -96,6 +96,26 @@ A curated collection of Claude Code plugins designed to enhance development work
 
 [View Plugin Details →](plugins/direct-spend-visualizer/README.md)
 
+### 📰 AI News Crawler
+**Type**: Agent Skill
+**Description**: Crawl the latest AI news from multiple sources, deduplicate, and output a single time-stamped JSON file with 10 items, all summarized in Chinese. Triggered when the request contains "去吧小飞机".
+
+**Features**:
+- 🗂️ Multi-source aggregation with strict deduplication by `url` and `title`
+- ⏱️ Time-window filtering (default `144h`) and optional `keywords`
+- 🌐 Chinese summaries for English content; preserve original `language` field
+- 📄 Single output file `<YYYYMMDD_HHMMSS>.json` created in current directory
+- 📅 Sorted by `published_at` (ISO8601) in descending order; always 10 items
+- 🛑 No chat output; file-only workflow for clean automation
+
+**Use Cases**:
+- Daily AI news digest generation
+- Competitive intelligence and research monitoring
+- Internal reporting and executive briefings
+- Trend tracking across major tech media
+
+[View Plugin Details →](plugins/ai-news-crawler/skills/SKILL.md)
+
 ## 📋 Plugin Types
 
 This marketplace includes different types of Claude Code plugins:
