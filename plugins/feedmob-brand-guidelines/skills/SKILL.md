@@ -436,7 +436,7 @@ Background/Less Important → #A2A4A4 (Grey)
 
 ### When Creating Presentations
 
-**If using the ppt-generator skill**:
+**If using the feedmob-presentations skill**:
 - Automatically apply `color_scheme: "feedmob"`
 - Enable FeedMob branding features
 - Follow the slide layout specifications above
@@ -543,9 +543,9 @@ Before finalizing any FeedMob-branded content:
 
 ## Integration with Other Skills
 
-### Using with ppt-generator
+### Using with feedmob-presentations
 
-When creating PowerPoint presentations, automatically invoke the ppt-generator skill with FeedMob settings:
+When creating PowerPoint presentations, automatically invoke the feedmob-presentations skill with FeedMob settings:
 
 ```bash
 python scripts/create_ppt.py --output presentation.pptx --color-scheme feedmob --title "Presentation Title"

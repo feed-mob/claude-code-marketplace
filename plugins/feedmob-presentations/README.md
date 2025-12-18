@@ -191,7 +191,7 @@ python scripts/create_ppt.py --output company.pptx --json slides.json
 
 ## Skill Details
 
-- **Name**: `ppt-generator`
+- **Name**: `feedmob-presentations`
 - **Tools**: Read, Write, Bash
 - **Language**: Python
 - **Dependencies**: python-pptx>=0.6.21
@@ -307,7 +307,7 @@ This plugin follows professional presentation design standards:
 
 Ensure you're running the script from the correct directory:
 ```bash
-cd plugins/ppt-generator/skills
+cd plugins/feedmob-presentations/skills
 python scripts/create_ppt.py [options]
 ```
 

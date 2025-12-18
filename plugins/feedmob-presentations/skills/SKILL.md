@@ -1,5 +1,5 @@
 ---
-name: ppt-generator
+name: feedmob-presentations
 description: Create, edit, and analyze PowerPoint presentations with professional styling, themes, and layouts. Supports python-pptx for creation and OOXML manipulation for advanced editing.
 allowed-tools: Read, Write, Bash
 ---

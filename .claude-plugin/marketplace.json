@@ -49,8 +49,8 @@
       ]
     },
     {
-      "name": "ppt-generator",
-      "source": "./plugins/ppt-generator",
+      "name": "feedmob-presentations",
+      "source": "./plugins/feedmob-presentations",
       "description": "Create professional PowerPoint presentations with enhanced styling, themes, and layout options",
       "version": "2.0.0",
       "author": {

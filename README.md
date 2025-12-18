@@ -51,7 +51,7 @@ A curated collection of Claude Code plugins designed to enhance development work
 
 [View Plugin Details →](plugins/easy-commit/commands/smart-commit.md)
 
-### 📊 PPT Generator
+### 📊 FeedMob Presentations
 **Type**: Agent Skill
 **Description**: Create and edit PowerPoint presentations using Python and python-pptx library.
 
@@ -69,7 +69,7 @@ A curated collection of Claude Code plugins designed to enhance development work
 - Business reports
 - Quick slide deck creation
 
-[View Plugin Details →](plugins/ppt-generator/README.md)
+[View Plugin Details →](plugins/feedmob-presentations/README.md)
 
 ### 📈 Direct Spend Visualizer
 **Type**: Agent Skill
@@ -144,7 +144,7 @@ A curated collection of Claude Code plugins designed to enhance development work
 - Investor decks and business proposals
 
 **Integration**:
-- Works seamlessly with `ppt-generator` skill for presentations
+- Works seamlessly with `feedmob-presentations` skill for presentations
 - Enforces brand standards for all FeedMob content
 - Comprehensive quality checklist for brand compliance
 
@@ -162,7 +162,7 @@ Specialized subagents that Claude can invoke automatically based on context:
 ### 🛠️ Skills
 Model-invoked capabilities that extend Claude's functionality:
 - **CSV URL Parser Skill**: Extracts URL parameters from CSV data
-- **PPT Generator Skill**: Creates and edits PowerPoint presentations
+- **FeedMob Presentations Skill**: Creates and edits PowerPoint presentations
 - **Direct Spend Visualizer Skill**: Visualizes FeedMob spend data as ASCII charts
 - **AI News Crawler Skill**: Aggregates and summarizes AI news in Chinese
 - **FeedMob Brand Guidelines Skill**: Generates FeedMob-branded materials with brand compliance
@@ -199,8 +199,8 @@ You can also install individual plugins directly:
 # Install Test Generator
 /plugin install test-generator@feedmob-marketplace
 
-# Install PPT Generator
-/plugin install ppt-generator@feedmob-marketplace
+# Install FeedMob Presentations
+/plugin install feedmob-presentations@feedmob-marketplace
 
 # Install Direct Spend Visualizer
 /plugin install direct-spend-visualizer@feedmob-marketplace
@@ -260,7 +260,7 @@ your-claude-plugins/
 │   │   └── plugin.json
 │   ├── agents/
 │   └── README.md
-├── ppt-generator/
+├── feedmob-presentations/
 │   ├── .claude-plugin/
 │   │   └── plugin.json
 │   ├── skills/
@@ -343,8 +343,8 @@ The marketplace configuration follows the [Claude Code Plugin Marketplaces](http
       "category": "productivity"
     },
     {
-      "name": "ppt-generator",
-      "source": "./plugins/ppt-generator",
+      "name": "feedmob-presentations",
+      "source": "./plugins/feedmob-presentations",
       "description": "Create and edit PowerPoint presentations using Python and python-pptx library",
       "version": "1.0.0",
       "author": {
@@ -496,7 +496,7 @@ If the marketplace appears but plugin installation fails:
 /plugin
 
 # Install specific plugin
-/plugin install csv-url-parser@feedmob-marketplace
+/plugin install feedmob-presentations@feedmob-marketplace
 ```
 
 ## 🤝 Support
