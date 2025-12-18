@@ -116,6 +116,40 @@ A curated collection of Claude Code plugins designed to enhance development work
 
 [View Plugin Details →](plugins/ai-news-crawler/skills/SKILL.md)
 
+### 🎨 FeedMob Brand Guidelines
+**Type**: Agent Skill
+**Description**: Generate FeedMob-branded content including reports, presentations, charts, and artifacts following official brand guidelines.
+
+**Features**:
+- 🎨 **Brand Consistency**: Automatically applies FeedMob brand standards
+- 📝 **Typography Control**: Uses approved Lato font family exclusively
+- 🎨 **Color Palette**: Applies official FeedMob teal (#00B5AD) color scheme
+- 📊 **Data Visualization**: Creates on-brand charts with consistent color mapping
+- 🖼️ **Logo Compliance**: Handles logo usage with proper specifications
+- 📄 **Multiple Formats**: Supports reports, presentations, charts, artifacts
+- ✅ **Quality Assurance**: Built-in brand compliance checklist
+
+**Brand Guidelines**:
+- **Primary Color**: Teal (#00B5AD) for accents and emphasis
+- **Typography**: Lato Light (body), Lato Regular (headers), Lato Bold (emphasis)
+- **Logo**: Black text + teal plus sign with proper clear space
+- **Design**: Modern, clean, minimalist with white backgrounds
+- **Charts**: Maximum 4 colors, consistent mapping, Lato font
+
+**Use Cases**:
+- FeedMob-branded reports and documents
+- PowerPoint presentations with FeedMob styling
+- Data visualizations and charts
+- Marketing materials and artifacts
+- Investor decks and business proposals
+
+**Integration**:
+- Works seamlessly with `ppt-generator` skill for presentations
+- Enforces brand standards for all FeedMob content
+- Comprehensive quality checklist for brand compliance
+
+[View Plugin Details →](plugins/feedmob-brand-guidelines/README.md)
+
 ## 📋 Plugin Types
 
 This marketplace includes different types of Claude Code plugins:
@@ -130,6 +164,8 @@ Model-invoked capabilities that extend Claude's functionality:
 - **CSV URL Parser Skill**: Extracts URL parameters from CSV data
 - **PPT Generator Skill**: Creates and edits PowerPoint presentations
 - **Direct Spend Visualizer Skill**: Visualizes FeedMob spend data as ASCII charts
+- **AI News Crawler Skill**: Aggregates and summarizes AI news in Chinese
+- **FeedMob Brand Guidelines Skill**: Generates FeedMob-branded materials with brand compliance
 
 ### ⚡ Commands
 Custom slash commands for specific workflows:
@@ -171,6 +207,9 @@ You can also install individual plugins directly:
 
 # Install Easy Commit
 /plugin install easy-commit@feedmob-marketplace
+
+# Install FeedMob Brand Guidelines
+/plugin install feedmob-brand-guidelines@feedmob-marketplace
 ```
 
 #### Method 3: Browse and Install Interactively
