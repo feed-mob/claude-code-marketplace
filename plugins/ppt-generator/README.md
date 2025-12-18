@@ -1,14 +1,25 @@
 # PPT Generator Plugin
 
-A Claude Code plugin that provides an Agent Skill for creating and editing PowerPoint presentations using Python and the python-pptx library.
+A comprehensive Claude Code plugin for creating, editing, and analyzing PowerPoint presentations through multiple approaches: Python-based creation, direct OOXML manipulation, and template workflows.
 
 ## Features
 
-- 🎯 **Easy Creation**: Quickly generate PowerPoint presentations from simple commands
-- 📊 **Multiple Formats**: Support for command-line and JSON-based slide definitions
-- 🖼️ **Image Support**: Add images to slides with custom positioning
-- 📝 **Text Formatting**: Create title slides, content slides, and custom text layouts
-- ✅ **Standard Format**: Generates standard .pptx files compatible with Microsoft PowerPoint, LibreOffice, and Google Slides
+### Core Capabilities
+- 🎯 **Python-based Creation**: Generate presentations programmatically with python-pptx
+- 🔧 **OOXML Manipulation**: Direct XML editing for advanced control
+- 📋 **Template Workflows**: Work with existing templates
+- 🎨 **Professional Styling**: Multiple color schemes and design principles
+- 🖼️ **Smart Assets**: Automatic background selection and logo insertion
+- 🏷️ **Footer Branding**: Automatic FeedMob logo in footer on every slide
+- 📊 **Multiple Formats**: Command-line, JSON, and programmatic APIs
+- ✅ **Standard Format**: Compatible with PowerPoint, LibreOffice, Google Slides
+
+### Advanced Features
+- 📝 **Text Operations**: Extract, replace, and format text across slides
+- 🔄 **Slide Management**: Rearrange, duplicate, and delete slides via OOXML
+- 🎨 **Design Principles**: Built-in support for 6x6 rule, 60-30-10 color rule
+- 🔍 **Analysis Tools**: Text inventory, structure validation
+- 📐 **Layout Control**: Professional grid-based positioning
 
 ## Installation
 
@@ -46,15 +57,66 @@ Create a presentation about quarterly results with slides for Introduction, Resu
 **Result:**
 - Creates a PPTX file with title slide and content slides
 
-## Features
+## Three Approaches to PowerPoint
 
-### Core Capabilities
+This plugin supports three complementary workflows:
 
-- **Create New Presentations**: Generate fresh PowerPoint files from scratch
-- **Add Slides**: Create title slides and content slides with different layouts
-- **Add Text Content**: Insert titles, subtitles, and body text with bullet points
-- **Insert Images**: Add images to slides from file paths with custom positioning
-- **Set Layouts**: Use standard PowerPoint layouts (title slide, title and content, blank)
+### 1. Python-based Creation (python-pptx)
+
+**Best for**: Creating new presentations from scratch with professional styling.
+
+```bash
+python scripts/create_ppt.py --output presentation.pptx --json slides.json
+```
+
+**Capabilities**:
+- Professional color schemes (FeedMob, Binance, Modern, Corporate)
+- Automatic background selection and optional content logos
+- Footer logo on every slide for consistent branding
+- Multiple slide layouts (title, content, metrics dashboard, comparison)
+- Advanced typography and visual effects
+
+### 2. OOXML Manipulation
+
+**Best for**: Advanced editing beyond library capabilities, bulk operations.
+
+```bash
+# Unpack PPTX
+python scripts/ooxml_helpers.py unpack presentation.pptx
+
+# Edit XML files directly
+# Modify ppt/slides/*.xml, ppt/presentation.xml, etc.
+
+# Repack
+python scripts/ooxml_helpers.py repack unpacked_dir presentation.pptx -o modified.pptx
+```
+
+**Capabilities**:
+- Rearrange slides by modifying XML
+- Bulk text replacement across all slides
+- Access comments, speaker notes, animations
+- Fine-grained control over formatting
+
+### 3. Template Workflows
+
+**Best for**: Working with existing branded templates.
+
+**Workflow**:
+1. Extract template content inventory
+2. Generate replacement text as JSON
+3. Apply replacements programmatically
+4. Validate and output modified presentation
+
+## Core Features
+
+### Creation Features
+
+- **Multiple Color Schemes**: FeedMob, Binance, Professional, Modern, Corporate
+- **Smart Backgrounds**: Automatic selection based on content keywords
+- **Footer Branding**: FeedMob logo automatically added to every slide footer
+- **Logo Insertion**: Optional content logos for specific slide types
+- **Professional Layouts**: Title, content, metrics, comparison, two-column slides
+- **Design Principles**: 6x6 rule, 60-30-10 color rule, grid alignment
 
 ### Supported Slide Types
 
@@ -64,9 +126,14 @@ Create a presentation about quarterly results with slides for Introduction, Resu
 
 ## Requirements
 
-- Python 3.6 or higher
-- python-pptx library (>=0.6.21)
-- Image files must exist at specified paths (for image insertion)
+**Core Requirements**:
+- Python 3.6+
+- python-pptx >= 0.6.21
+
+**Optional Tools**:
+- markitdown (text extraction)
+- LibreOffice (validation and conversion)
+- zipfile (OOXML manipulation, built-in to Python)
 
 ## Usage Examples
 
@@ -158,13 +225,81 @@ Add images with custom positioning:
 }
 ```
 
+## OOXML Helper Scripts
+
+The plugin includes powerful OOXML manipulation tools:
+
+### Unpack PPTX
+```bash
+python scripts/ooxml_helpers.py unpack presentation.pptx -o unpacked/
+```
+
+### Text Inventory
+```bash
+python scripts/ooxml_helpers.py inventory presentation.pptx -o inventory.json
+```
+
+### Bulk Text Replacement
+```bash
+python scripts/ooxml_helpers.py replace presentation.pptx "Old Text" "New Text" -o modified.pptx
+```
+
+### Validate Structure
+```bash
+python scripts/ooxml_helpers.py validate presentation.pptx
+```
+
+### Repack to PPTX
+```bash
+python scripts/ooxml_helpers.py repack unpacked/ presentation.pptx -o modified.pptx
+```
+
+## Design Principles
+
+This plugin follows professional presentation design standards:
+
+### Typography
+- **Title**: ≥28pt for readability
+- **Body**: ≥18pt minimum
+- **Fonts**: Web-safe fonts (Arial, Helvetica)
+- **Consistency**: Limited font variations
+
+### Layout
+- **6x6 Rule**: Max 6 lines per slide, 6 words per line
+- **20% Margins**: Minimum white space
+- **Grid System**: 12x8 grid for alignment
+- **Visual Balance**: Even weight distribution
+
+### Color
+- **60-30-10 Rule**: 60% primary, 30% secondary, 10% accent
+- **Max 4 Colors**: Per chart/visualization
+- **Consistent Mapping**: Same colors for same data
+- **Accessibility**: WCAG AA contrast ratios
+
+### Content
+- **Content-Informed Design**: Design serves content
+- **Strong Hierarchy**: Clear visual priorities
+- **Readable Contrast**: Sufficient color contrast
+- **Professional Quality**: Business-ready output
+
 ## Best Practices
 
-1. **Plan Structure First**: Define slide structure before adding detailed content
-2. **Use Appropriate Layouts**: Choose layouts that match content type
-3. **Keep Text Concise**: Slides should have clear, brief content
-4. **Optimize Images**: Ensure images are appropriately sized before insertion
-5. **Test Output**: Open generated PPT to verify formatting
+### Planning
+- Define structure before detailed content
+- Choose approach based on task (creation vs editing)
+- Use content-informed design principles
+
+### Implementation
+- Python-pptx for new presentations
+- OOXML for advanced operations
+- Validate after major changes
+- Keep text concise (6x6 rule)
+
+### Quality Assurance
+- Test in multiple applications
+- Verify accessibility (contrast, font size)
+- Validate OOXML structure
+- Check on actual display device
 
 ## Troubleshooting
 
@@ -206,8 +341,42 @@ Improvements to this plugin are welcome! You can:
 
 ## Documentation
 
-- [SKILL.md](skills/SKILL.md) - Detailed skill documentation
-- [EXAMPLES.md](skills/EXAMPLES.md) - Usage examples and scenarios
+- [SKILL.md](skills/SKILL.md) - Comprehensive skill documentation with examples and design principles
+- [ooxml.md](skills/ooxml.md) - OOXML structure and manipulation guide
+
+## Advanced Topics
+
+### OOXML Structure
+
+PPTX files are ZIP archives containing:
+- `ppt/presentation.xml` - Slide order and IDs
+- `ppt/slides/*.xml` - Individual slide content
+- `ppt/slideLayouts/` - Layout templates
+- `[Content_Types].xml` - File type declarations
+- `ppt/_rels/*.rels` - Relationship definitions
+
+See [ooxml.md](skills/ooxml.md) for complete reference.
+
+### Direct XML Editing
+
+For operations beyond python-pptx:
+1. Unpack PPTX (it's a ZIP)
+2. Edit XML files
+3. Repack to PPTX
+4. Validate structure
+
+**Critical**: Invalid OOXML creates corrupted files. Always validate.
+
+### Color Palettes
+
+Built-in professional palettes:
+- **FeedMob**: Teal (#00B5AD), Gray, Blue
+- **Binance**: Gold (#F0B90B), Black, White
+- **Professional**: Navy, Gray, Blue
+- **Modern**: Black, Coral, Mint
+- **Corporate**: Charcoal, Gold, White
+
+See SKILL.md for complete palette definitions.
 
 ## License
 
