@@ -180,6 +180,44 @@ Captions - Lato Light, 12pt, #A2A4A4
 2. **White Logo + Teal Plus** - PREFERRED for dark backgrounds
 3. **All White Logo** - Use only when necessary on teal/dark backgrounds
 
+### Available Logo Assets
+
+The plugin includes official FeedMob logo files in the `assets/logos/` directory:
+
+**Logo Files**:
+- `feedmob-logo-black-teal.svg` - Black text + teal plus (for white backgrounds)
+- `feedmob-logo-white-teal.svg` - White text + teal plus (for dark backgrounds)
+- `feedmob-plus-icon-teal.svg` - Standalone teal plus icon (design element)
+
+**Usage in Content Generation**:
+
+When creating FeedMob-branded content, reference these logo files using their absolute path:
+
+```python
+# Example: Using logo in Python/PowerPoint generation
+logo_path = os.path.join(PLUGIN_ROOT, "assets/logos/feedmob-logo-black-teal.svg")
+
+# For white backgrounds (most common)
+logo_file = "assets/logos/feedmob-logo-black-teal.svg"
+
+# For dark/teal backgrounds
+logo_file = "assets/logos/feedmob-logo-white-teal.svg"
+
+# For design elements (plus icon only)
+plus_icon = "assets/logos/feedmob-plus-icon-teal.svg"
+```
+
+**Selection Guidelines**:
+- **White background** → Use `feedmob-logo-black-teal.svg`
+- **Dark/teal background** → Use `feedmob-logo-white-teal.svg`
+- **Decorative element** → Use `feedmob-plus-icon-teal.svg`
+
+**Integration with Tools**:
+- When using SVG format, ensure proper scaling while maintaining aspect ratio
+- Minimum display width: 190px
+- Maximum width: No limit, but keep proportional to content
+- Always maintain 1.5x clear space around the logo
+
 ### Plus Sign as Design Element
 
 The teal plus sign can be used as a supplemental design element:

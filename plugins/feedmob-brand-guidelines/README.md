@@ -22,6 +22,46 @@ A Claude Code plugin that provides an Agent Skill for generating FeedMob-branded
 - **Design**: Modern, clean, minimalist aesthetic
 - **Voice**: Professional but friendly, intelligent but approachable
 
+## Logo Assets
+
+This plugin includes official FeedMob logo files ready to use in your branded content:
+
+### Available Logos
+
+Located in `assets/logos/`:
+
+| File | Usage | Background |
+|------|-------|------------|
+| `feedmob-logo-black-teal.svg` | **Primary logo** | White or light backgrounds |
+| `feedmob-logo-white-teal.svg` | **Alternative logo** | Dark or teal backgrounds |
+| `feedmob-plus-icon-teal.svg` | **Design element** | Decorative accent |
+
+### Logo Specifications
+
+- **Format**: SVG (scalable vector graphics)
+- **Minimum Width**: 190px
+- **Clear Space**: 1.5x the diameter of the plus sign on all sides
+- **Placement**: Top left (preferred), top right, or bottom right
+
+### When to Use Each Logo
+
+**Black Logo (`feedmob-logo-black-teal.svg`)**:
+- ✅ White backgrounds (reports, presentations, documents)
+- ✅ Light colored backgrounds
+- ✅ Most common use case
+
+**White Logo (`feedmob-logo-white-teal.svg`)**:
+- ✅ Dark backgrounds
+- ✅ Teal (#00B5AD) backgrounds
+- ✅ Section divider slides
+
+**Plus Icon (`feedmob-plus-icon-teal.svg`)**:
+- ✅ Bullet point replacements
+- ✅ Section markers
+- ✅ Visual accents and design elements
+
+The skill automatically selects the appropriate logo based on your content's background color.
+
 ## Installation
 
 This plugin is part of the FeedMob Claude Plugins marketplace. It will be automatically available when the plugin is installed.
