@@ -91,17 +91,22 @@ The system intelligently selects backgrounds based on content:
 
 ### Logo Features
 
+**Important**: All FeedMob logo assets should be obtained from the `feedmob-brand-guidelines` skill, which contains official FeedMob logo files in its `assets/logos/` directory:
+- `feedmob-logo-black-teal.svg` - Black text + teal plus (for white backgrounds)
+- `feedmob-logo-white-teal.svg` - White text + teal plus (for dark backgrounds)
+- `feedmob-plus-icon-teal.svg` - Standalone teal plus icon (design element)
+
 **Footer Logo (Always Present)**:
 - Automatically added to ALL slides in the footer area
 - Position: Bottom-right corner (0.8x0.8 inches)
-- Logo: FeedMob brand logo (feedmob_logo.png)
+- Logo: Use FeedMob brand logo from feedmob-brand-guidelines skill
 - Purpose: Consistent branding across entire presentation
 
 **Content Logo (Optional)**:
 - **Added to**: Content slides, comparison slides, visual content, two-column layouts
 - **Not added to**: Title slides, section headers, metrics dashboards, slides with existing backgrounds
 - **Positioning**: Bottom-right corner with subtle transparency
-- **Selection**: Random from available FeedMob logo assets (when auto_logos enabled)
+- **Selection**: Use appropriate logo from feedmob-brand-guidelines skill based on background color (when auto_logos enabled)
 
 ### Enhanced Slide Types
 
@@ -359,7 +364,7 @@ Choose palettes that match presentation tone:
 - unzip/zip (OOXML manipulation)
 - LibreOffice (validation and conversion)
 
-For OOXML manipulation details, see [ooxml.md](ooxml.md).
+For OOXML manipulation details, see [REFERENCE.md](REFERENCE.md).
 
 
 

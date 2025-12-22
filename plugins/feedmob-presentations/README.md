@@ -1,6 +1,14 @@
-# PPT Generator Plugin
+# FeedMob Presentations
 
-A comprehensive Claude Code plugin for creating, editing, and analyzing PowerPoint presentations through multiple approaches: Python-based creation, direct OOXML manipulation, and template workflows.
+![Claude Code Skill](https://img.shields.io/badge/Claude_Code-Skill-00B5AD?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.0.0-blue?style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+
+A comprehensive Claude Code Skill for creating, editing, and analyzing PowerPoint presentations through multiple approaches: Python-based creation, direct OOXML manipulation, and template workflows.
+
+> **Skill Type**: Agent Skill
+> **Compatible with**: Claude Code CLI
+> **Version**: 1.0.0
 
 ## Features
 
@@ -10,9 +18,10 @@ A comprehensive Claude Code plugin for creating, editing, and analyzing PowerPoi
 - 📋 **Template Workflows**: Work with existing templates
 - 🎨 **Professional Styling**: Multiple color schemes and design principles
 - 🖼️ **Smart Assets**: Automatic background selection and logo insertion
-- 🏷️ **Footer Branding**: Automatic FeedMob logo in footer on every slide
+- 🏷️ **Footer Branding**: Automatic FeedMob logo in footer on every slide (uses feedmob-brand-guidelines assets)
 - 📊 **Multiple Formats**: Command-line, JSON, and programmatic APIs
 - ✅ **Standard Format**: Compatible with PowerPoint, LibreOffice, Google Slides
+- 🔗 **Skill Integration**: Works with feedmob-brand-guidelines skill for logo assets
 
 ### Advanced Features
 - 📝 **Text Operations**: Extract, replace, and format text across slides
@@ -21,9 +30,44 @@ A comprehensive Claude Code plugin for creating, editing, and analyzing PowerPoi
 - 🔍 **Analysis Tools**: Text inventory, structure validation
 - 📐 **Layout Control**: Professional grid-based positioning
 
+## Directory Structure
+
+```
+feedmob-presentations/
+├── Skill.md                    # Main skill file
+├── REFERENCE.md                # OOXML manipulation reference guide
+├── README.md                   # This file
+└── scripts/
+    ├── create_ppt.py          # Main presentation creation script
+    └── ooxml_helpers.py       # OOXML manipulation utilities
+```
+
+**Note**: Logo assets (FeedMob logos) are obtained from the `feedmob-brand-guidelines` skill, which contains official brand assets in its `assets/logos/` directory.
+
 ## Installation
 
-This plugin is part of the FeedMob Claude Plugins marketplace. It will be automatically available when the plugin is installed.
+### Option 1: From Claude Code Marketplace (Recommended)
+
+This skill is part of the FeedMob Claude Code marketplace. It will be automatically available when installed through the marketplace.
+
+### Option 2: Manual Installation
+
+1. Download or clone this repository
+2. Create a ZIP file of the `feedmob-presentations` folder
+3. In Claude Code, navigate to Settings > Skills
+4. Upload the ZIP file
+5. Enable the skill in your Claude Code settings
+
+**Note**: When packaging as a ZIP file, ensure the folder structure is maintained with `Skill.md` at the root level of the ZIP contents.
+
+## How It Works
+
+This skill follows the [Claude Code Skills specification](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills):
+
+1. **Automatic Activation**: Claude Code reads the `description` field in `Skill.md` and determines when to invoke this skill
+2. **Context Loading**: When activated, the skill loads comprehensive PowerPoint creation capabilities
+3. **Script Execution**: Runs Python scripts for creating or manipulating presentations
+4. **Asset Integration**: References logo files from the `feedmob-brand-guidelines` skill for consistent branding
 
 ## Usage
 
@@ -129,6 +173,9 @@ python scripts/ooxml_helpers.py repack unpacked_dir presentation.pptx -o modifie
 **Core Requirements**:
 - Python 3.6+
 - python-pptx >= 0.6.21
+
+**Skill Dependencies**:
+- **feedmob-brand-guidelines**: Required for FeedMob logo assets and brand compliance
 
 **Optional Tools**:
 - markitdown (text extraction)
@@ -307,7 +354,7 @@ This plugin follows professional presentation design standards:
 
 Ensure you're running the script from the correct directory:
 ```bash
-cd plugins/feedmob-presentations/skills
+cd plugins/feedmob-presentations
 python scripts/create_ppt.py [options]
 ```
 
@@ -330,19 +377,62 @@ pip install python-pptx
 - Ensure proper structure matches expected format
 - Check for missing commas or brackets
 
+## Packaging for Distribution
+
+To create a distributable ZIP file of this skill:
+
+```bash
+# Navigate to the parent directory
+cd /path/to/plugins
+
+# Create ZIP file (ensure folder structure is correct)
+zip -r feedmob-presentations.zip feedmob-presentations/ \
+  -x "*.DS_Store" -x "*/.git/*" -x "*/__pycache__/*" -x "*.pyc"
+```
+
+The ZIP should contain:
+```
+feedmob-presentations.zip
+└── feedmob-presentations/
+    ├── Skill.md
+    ├── REFERENCE.md
+    ├── README.md
+    └── scripts/
+        ├── create_ppt.py
+        └── ooxml_helpers.py
+```
+
+**Note**: Logo assets are not included in this skill's ZIP file. They should be obtained from the `feedmob-brand-guidelines` skill.
+
 ## Contributing
 
-Improvements to this plugin are welcome! You can:
+Improvements to this skill are welcome! When contributing:
+
+### Development Guidelines
+- Follow the [Claude Code Skills standards](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)
+- Maintain `Skill.md` as the primary skill file in the root directory
+- Keep the YAML frontmatter updated with accurate metadata
+- Test thoroughly before submitting changes
+
+### Contribution Ideas
 - Add support for more slide layouts
 - Enhance text formatting options
 - Add support for charts and tables
-- Improve error handling
+- Improve error handling and validation
+- Update design principles and examples
 - Provide feedback and suggestions
+
+### Before Submitting
+- Update README.md if directory structure changes
+- Test skill activation with various prompts
+- Verify scripts work with current python-pptx version
+- Ensure all documentation is up to date
 
 ## Documentation
 
-- [SKILL.md](skills/SKILL.md) - Comprehensive skill documentation with examples and design principles
-- [ooxml.md](skills/ooxml.md) - OOXML structure and manipulation guide
+- [Skill.md](Skill.md) - Comprehensive skill documentation with examples and design principles
+- [REFERENCE.md](REFERENCE.md) - OOXML structure and manipulation guide
+- [Official Claude Code Skills Documentation](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)
 
 ## Advanced Topics
 
@@ -355,7 +445,7 @@ PPTX files are ZIP archives containing:
 - `[Content_Types].xml` - File type declarations
 - `ppt/_rels/*.rels` - Relationship definitions
 
-See [ooxml.md](skills/ooxml.md) for complete reference.
+See [REFERENCE.md](REFERENCE.md) for complete reference.
 
 ### Direct XML Editing
 
@@ -376,7 +466,7 @@ Built-in professional palettes:
 - **Modern**: Black, Coral, Mint
 - **Corporate**: Charcoal, Gold, White
 
-See SKILL.md for complete palette definitions.
+See Skill.md for complete palette definitions.
 
 ## License
 
