@@ -1,22 +1,50 @@
 ---
-name: ppt-generator
-description: Create professional PowerPoint presentations with enhanced styling, themes, and layout options. Use when you need to generate PPT files with modern design elements.
+name: feedmob-presentations
+description: Create, edit, and analyze PowerPoint presentations with professional styling, themes, and layouts. Supports python-pptx for creation and OOXML manipulation for advanced editing.
 allowed-tools: Read, Write, Bash
 ---
 
 # PPT Generator
 
-This skill creates professional PowerPoint presentations using the python-pptx library with enhanced styling capabilities inspired by modern business presentations. It supports advanced features including multiple color schemes (FeedMob, Binance, professional, modern, corporate), professional typography, custom layouts, and image effects.
+This skill enables comprehensive PowerPoint presentation management through multiple approaches:
+
+1. **Python-based Creation**: Use python-pptx library for programmatic generation with professional styling
+2. **Direct OOXML Editing**: Unpack, modify XML content, and repack PPTX files for advanced control
+3. **Template-based Workflow**: Leverage existing templates with content replacement
+
+**PPTX files are ZIP archives containing XML files and resources.** This architecture enables both high-level creation and low-level manipulation.
+
+## Core Capabilities
+
+### Creating Presentations
+- Generate from scratch with python-pptx
+- Multiple color schemes (FeedMob, Binance, Professional, Modern, Corporate)
+- Automatic background selection based on content
+- Smart logo insertion for brand consistency
+- Professional typography and layouts
+
+### Editing Presentations
+- Unpack PPTX to access raw XML
+- Modify slide content, layouts, and structure
+- Rearrange, duplicate, or delete slides
+- Replace text and images programmatically
+- Repack into valid PPTX format
+
+### Analyzing Presentations
+- Extract text content as markdown
+- Access raw XML for comments and notes
+- Examine slide layouts and structure
+- Validate presentation integrity
 
 ## Instructions
 
 When invoked, this skill will:
 
-1. **Identify requirements**: Understand what kind of presentation needs to be created
-2. **Apply styling**: Select appropriate color scheme and typography based on context
-3. **Create PPT structure**: Set up a new PowerPoint file with enhanced styling
-4. **Add content**: Populate slides with titles, text, and images with professional formatting
-5. **Save output**: Generate the final .pptx file in the specified location
+1. **Understand Requirements**: Analyze what presentation operation is needed
+2. **Select Approach**: Choose creation, editing, or analysis workflow
+3. **Apply Design Principles**: Use content-informed design with proper hierarchy
+4. **Execute Operations**: Run appropriate tools (python-pptx, XML manipulation, etc.)
+5. **Validate Output**: Ensure generated PPTX is valid and properly formatted
 
 ## Features
 
@@ -25,6 +53,7 @@ When invoked, this skill will:
 - **Create new presentations**: Generate fresh PowerPoint files with professional styling
 - **Multiple color schemes**: Choose from FeedMob, Binance (default), professional, modern, or corporate themes
 - **FeedMob branding**: Native support for FeedMob color scheme with custom slide layouts
+- **Footer logo**: Automatic FeedMob logo placement in footer (bottom-right) on every slide
 - **Advanced layouts**: Create section headers, comparison slides, two-column layouts, metrics dashboards
 - **Typography**: Professional fonts (Arial) with consistent sizing and colors
 - **Image effects**: Add shadows, proper sizing, and positioning for images
@@ -60,12 +89,19 @@ The system intelligently selects backgrounds based on content:
 - **Marketing/Growth**: Uses marketing-focused backgrounds (bg1.jpg)
 - **General Content**: Uses appropriate backgrounds for overviews, introductions, features, benefits
 
-### Logo Insertion Rules
+### Logo Features
 
+**Footer Logo (Always Present)**:
+- Automatically added to ALL slides in the footer area
+- Position: Bottom-right corner (0.8x0.8 inches)
+- Logo: FeedMob brand logo (feedmob_logo.png)
+- Purpose: Consistent branding across entire presentation
+
+**Content Logo (Optional)**:
 - **Added to**: Content slides, comparison slides, visual content, two-column layouts
 - **Not added to**: Title slides, section headers, metrics dashboards, slides with existing backgrounds
 - **Positioning**: Bottom-right corner with subtle transparency
-- **Selection**: Random from available FeedMob logo assets
+- **Selection**: Random from available FeedMob logo assets (when auto_logos enabled)
 
 ### Enhanced Slide Types
 
@@ -220,15 +256,110 @@ Create a FeedMob presentation and add the logo image to the title slide with sha
 - Standard PowerPoint format compatible with Microsoft PowerPoint, LibreOffice, and Google Slides
 - Preserves all formatting and layout settings
 
+## OOXML Direct Manipulation
+
+For advanced editing beyond python-pptx capabilities, directly manipulate the OOXML structure:
+
+### Unpacking PPTX
+```bash
+# PPTX files are ZIP archives
+unzip presentation.pptx -d unpacked/
+```
+
+### Key OOXML Files
+- `ppt/presentation.xml` - Slide order and IDs
+- `ppt/slides/slide*.xml` - Individual slide content
+- `ppt/slideLayouts/` - Layout templates
+- `ppt/media/` - Embedded images
+- `[Content_Types].xml` - File type declarations
+- `ppt/_rels/presentation.xml.rels` - Slide relationships
+
+### Common Operations
+
+**Rearrange Slides**: Modify `<p:sldId>` sequence in `presentation.xml`
+
+**Replace Text**: Edit text within `<a:t>` tags in slide XML files
+
+**Duplicate Slides**: Copy slide XML and update IDs in relationships
+
+**Delete Slides**: Remove references from presentation.xml, relationships, and Content_Types
+
+### Repacking PPTX
+```bash
+cd unpacked/
+zip -r ../modified.pptx * -x "*.DS_Store"
+```
+
+**Critical**: Validate OOXML structure before repacking. Incorrect XML causes corrupted files.
+
+## Design Principles
+
+Follow these principles for professional presentations:
+
+### Content-Informed Design
+- Design should serve content, not overshadow it
+- Use strong visual hierarchy
+- Maintain readable contrast (WCAG AA minimum)
+- Use web-safe fonts (Arial, Helvetica, Times New Roman, Georgia)
+
+### Typography Standards
+- Title: ≥28pt for readability
+- Body: ≥18pt minimum
+- Consistent font family throughout
+- Limited font variations (2-3 weights max)
+
+### Color Guidelines
+- **60-30-10 Rule**: 60% primary, 30% secondary, 10% accent
+- Maximum 4 colors per chart
+- Consistent color mapping across visualizations
+- Test contrast ratios for accessibility
+
+### Layout Optimization
+- **6x6 Rule**: Max 6 lines per slide, 6 words per line
+- **20% Margins**: Minimum white space for readability
+- **Grid Alignment**: Use 12x8 grid for element positioning
+- **Visual Balance**: Distribute weight evenly across slide
+
+### Recommended Color Palettes
+
+Choose palettes that match presentation tone:
+
+**Professional Business**: Navy (#1a3a5c), Gray (#6b7280), Blue (#3b82f6)
+**Technology**: Teal (#00B5AD), Purple (#8b5cf6), Cyan (#06b6d4)
+**Corporate**: Charcoal (#374151), Gold (#f59e0b), White (#ffffff)
+**Modern**: Black (#000000), Coral (#EE6969), Mint (#10b981)
+
 ## Best Practices
 
-- **Plan structure first**: Define the slide structure before adding detailed content
-- **Use appropriate layouts**: Choose layouts that match the content type
-- **Keep text concise**: Slides should have clear, concise text
-- **Optimize images**: Ensure images are appropriately sized before insertion
-- **Test output**: Open the generated PPT to verify formatting
+### Planning
+- **Define Structure First**: Outline slide flow before detailed content
+- **Content-Informed Design**: Let content guide design choices
+- **Consistent Theme**: Maintain visual consistency throughout
 
-For detailed examples, see [EXAMPLES.md](EXAMPLES.md).
+### Implementation
+- **Use Appropriate Tools**: python-pptx for creation, OOXML for complex edits
+- **Validate Early**: Check output after each major change
+- **Keep Text Concise**: Follow 6x6 rule for readability
+- **Optimize Assets**: Compress images before insertion
+
+### Quality Assurance
+- **Test Compatibility**: Open in PowerPoint, LibreOffice, Google Slides
+- **Check Accessibility**: Verify contrast ratios and font sizes
+- **Validate OOXML**: Ensure no corrupted relationships or missing files
+- **Review on Device**: Test on actual presentation display
+
+## Requirements
+
+**Python Environment**:
+- Python 3.6+
+- python-pptx >= 0.6.21
+
+**Optional Tools**:
+- markitdown (text extraction)
+- unzip/zip (OOXML manipulation)
+- LibreOffice (validation and conversion)
+
+For OOXML manipulation details, see [ooxml.md](ooxml.md).
 
 
 

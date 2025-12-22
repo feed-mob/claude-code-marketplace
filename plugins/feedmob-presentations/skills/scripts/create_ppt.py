@@ -41,6 +41,9 @@ LOGO_IMAGES = [
     "fm_logo_1.png", "fm_logo_2.png", "fm_logo_3.png"
 ]
 
+# Default FeedMob footer logo
+FEEDMOB_FOOTER_LOGO = ASSETS_PATH / "feedmob_logo.png"
+
 # Content-based background selection mapping
 CONTENT_BACKGROUNDS = {
     # Business/Professional content
@@ -198,6 +201,46 @@ def add_logo_to_slide(slide, logo_path: str, position: str = 'bottom_right'):
         return logo
     except Exception as e:
         print(f"Warning: Could not add logo {logo_path}: {e}")
+        return None
+
+
+def add_footer_logo(slide, logo_path: Optional[str] = None):
+    """Add FeedMob logo to slide footer (bottom-right corner)."""
+    if logo_path is None:
+        logo_path = str(FEEDMOB_FOOTER_LOGO)
+
+    if not Path(logo_path).exists():
+        print(f"Warning: Footer logo not found at {logo_path}")
+        return None
+
+    # Determine slide dimensions
+    try:
+        presentation = slide.part.package.presentation_part.presentation
+        slide_width = presentation.slide_width
+        slide_height = presentation.slide_height
+    except AttributeError:
+        slide_width = Inches(10)
+        slide_height = Inches(7.5)
+
+    # Footer logo settings: smaller size for footer
+    logo_width = Inches(0.8)
+    logo_height = Inches(0.8)
+    margin = Inches(0.2)
+
+    # Position in bottom-right corner
+    left = slide_width - logo_width - margin
+    top = slide_height - logo_height - margin
+
+    # Add logo
+    try:
+        logo = slide.shapes.add_picture(logo_path, left, top, logo_width, logo_height)
+
+        # Subtle appearance - send to back
+        logo.z_order = 0
+
+        return logo
+    except Exception as e:
+        print(f"Warning: Could not add footer logo: {e}")
         return None
 
 
@@ -540,6 +583,9 @@ def create_two_column_slide(prs: Presentation, title: str, left_content: List[st
 
     set_font_style(right_tf, font_size=14, color=colors['text'])
 
+    # Add footer logo
+    add_footer_logo(slide)
+
     return slide
 
 
@@ -569,6 +615,9 @@ def create_title_slide(prs: Presentation, title: str, subtitle: Optional[str] = 
         # Apply design principles to subtitle
         if hasattr(prs, '_color_scheme'):
             apply_design_principles_to_text(subtitle_shape.text_frame, 'subtitle', color_scheme)
+
+    # Add footer logo
+    add_footer_logo(slide)
 
     return slide
 
@@ -627,6 +676,9 @@ def create_content_slide(prs: Presentation, title: str, content: List[str],
     if hasattr(prs, '_color_scheme'):
         apply_design_principles_to_text(tf, 'body', color_scheme)
 
+    # Add footer logo
+    add_footer_logo(slide)
+
     return slide
 
 
@@ -670,6 +722,9 @@ def create_content_slide_with_background(prs: Presentation, title: str, content:
 
     set_font_style(content_tf, font_name='Arial', font_size=18, color=colors['text'])
 
+    # Add footer logo
+    add_footer_logo(slide)
+
     return slide
 
 
@@ -706,6 +761,9 @@ def create_section_header_slide(prs: Presentation, title: str, subtitle: Optiona
         subtitle_tf = subtitle_box.text_frame
         subtitle_tf.text = subtitle
         set_font_style(subtitle_tf, font_name='Arial', font_size=24, color=colors['background'])
+
+    # Add footer logo
+    add_footer_logo(slide)
 
     return slide
 
@@ -759,6 +817,9 @@ def create_comparison_slide(prs: Presentation, title: str, left_title: str, righ
         p.level = 0
     set_font_style(right_content_tf, font_name='Arial', font_size=16, color=colors['text'])
 
+    # Add footer logo
+    add_footer_logo(slide)
+
     return slide
 
 
@@ -797,6 +858,9 @@ def create_professional_title_slide(prs: Presentation, title: str, subtitle: Opt
     title_tf.word_wrap = True
     set_font_style(title_tf, font_name='Arial', font_size=54,
                   color=colors['background'], bold=True)
+
+    # Add footer logo
+    add_footer_logo(slide)
 
     return slide
 
@@ -846,6 +910,9 @@ def create_feedmob_title_slide(prs: Presentation, title: str, subtitle: Optional
         subtitle_tf.text = subtitle
         set_font_style(subtitle_tf, font_name='Arial', font_size=28,
                       color=RGBColor(255, 255, 255), bold=False)
+
+    # Add footer logo
+    add_footer_logo(slide)
 
     return slide
 
@@ -907,6 +974,9 @@ def create_feedmob_content_slide(prs: Presentation, title: str, content: List[st
             pass
 
     set_font_style(content_tf, font_name='Arial', font_size=18, color=colors['text'])
+
+    # Add footer logo
+    add_footer_logo(slide)
 
     return slide
 
@@ -1025,6 +1095,9 @@ def create_visual_content_slide(prs: Presentation, title: str, content_points: L
         # Apply general styling
         apply_design_principles_to_text(content_tf, 'body', color_scheme)
 
+    # Add footer logo
+    add_footer_logo(slide)
+
     return slide
 
 
@@ -1100,6 +1173,9 @@ def create_metrics_dashboard_slide(prs: Presentation, title: str, metrics: List[
                 run.font.color.rgb = colors['text_light']
                 run.font.name = 'Arial'
 
+    # Add footer logo
+    add_footer_logo(slide)
+
     return slide
 
 
@@ -1107,6 +1183,9 @@ def create_blank_slide(prs: Presentation):
     """Create a blank slide."""
     slide_layout = prs.slide_layouts[6]  # Blank layout
     slide = prs.slides.add_slide(slide_layout)
+    # Add footer logo
+    add_footer_logo(slide)
+
     return slide
 
 

@@ -200,14 +200,14 @@ When you create FeedMob-branded content, this skill guarantees:
 
 ### PPT Generator Integration
 
-This skill works seamlessly with the `ppt-generator` skill:
+This skill works seamlessly with the `feedmob-presentations` skill:
 
 ```
 Create a FeedMob presentation about quarterly results
 ```
 
 The skill will:
-1. Invoke `ppt-generator` with FeedMob color scheme
+1. Invoke `feedmob-presentations` with FeedMob color scheme
 2. Apply proper typography (Lato font)
 3. Use FeedMob brand colors
 4. Place logo according to guidelines
