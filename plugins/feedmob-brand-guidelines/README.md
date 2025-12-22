@@ -1,6 +1,34 @@
-# FeedMob Branded Content Generator
+# FeedMob Brand Guidelines
 
-A Claude Code plugin that provides an Agent Skill for generating FeedMob-branded content including reports, presentations, charts, and artifacts. Ensures all content follows official FeedMob brand guidelines.
+![Claude Code Skill](https://img.shields.io/badge/Claude_Code-Skill-00B5AD?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.0.0-blue?style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+
+A Claude Code Skill for generating FeedMob-branded content including reports, presentations, charts, and artifacts. Ensures all content follows official FeedMob brand guidelines.
+
+> **Skill Type**: Agent Skill
+> **Compatible with**: Claude Code CLI
+> **Version**: 1.0.0
+
+## Table of Contents
+
+- [Features](#features)
+- [About FeedMob Brand](#about-feedmob-brand)
+- [Logo Assets](#logo-assets)
+- [Directory Structure](#directory-structure)
+- [Installation](#installation)
+- [How It Works](#how-it-works)
+- [Usage](#usage)
+- [Quick Start](#quick-start)
+- [Brand Guidelines Summary](#brand-guidelines-summary)
+- [Integration with Other Skills](#integration-with-other-skills)
+- [Examples](#examples)
+- [Best Practices](#best-practices)
+- [Troubleshooting](#troubleshooting)
+- [Packaging for Distribution](#packaging-for-distribution)
+- [Documentation](#documentation)
+- [Support](#support)
+- [Contributing](#contributing)
 
 ## Features
 
@@ -62,9 +90,43 @@ Located in `assets/logos/`:
 
 The skill automatically selects the appropriate logo based on your content's background color.
 
+## Directory Structure
+
+```
+feedmob-brand-guidelines/
+├── Skill.md                           # Main skill file with brand guidelines
+├── README.md                          # This file
+└── assets/
+    └── logos/
+        ├── feedmob-logo-black-teal.svg    # Primary logo (white backgrounds)
+        ├── feedmob-logo-white-teal.svg    # Alternative logo (dark backgrounds)
+        └── feedmob-plus-icon-teal.svg     # Plus icon design element
+```
+
 ## Installation
 
-This plugin is part of the FeedMob Claude Plugins marketplace. It will be automatically available when the plugin is installed.
+### Option 1: From Claude Code Marketplace (Recommended)
+
+This skill is part of the FeedMob Claude Code marketplace. It will be automatically available when installed through the marketplace.
+
+### Option 2: Manual Installation
+
+1. Download or clone this repository
+2. Create a ZIP file of the `feedmob-brand-guidelines` folder
+3. In Claude Code, navigate to Settings > Skills
+4. Upload the ZIP file
+5. Enable the skill in your Claude Code settings
+
+**Note**: When packaging as a ZIP file, ensure the folder structure is maintained with `Skill.md` at the root level of the ZIP contents.
+
+## How It Works
+
+This skill follows the [Claude Code Skills specification](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills):
+
+1. **Automatic Activation**: Claude Code reads the `description` field in `Skill.md` and determines when to invoke this skill
+2. **Context Loading**: When activated, the skill loads comprehensive FeedMob brand guidelines
+3. **Content Generation**: All generated content automatically follows FeedMob branding standards
+4. **Asset Access**: The skill can reference logo files from the `assets/logos/` directory
 
 ## Usage
 
@@ -77,6 +139,14 @@ The FeedMob Branded Content skill will automatically activate when you mention:
 - "Design FeedMob branded content for..."
 
 Or explicitly invoke the skill when creating any content that needs FeedMob branding.
+
+### Manual Invocation
+
+You can also explicitly invoke this skill in Claude Code:
+
+```
+Use the feedmob-brand-guidelines skill to create...
+```
 
 ## Quick Start
 
@@ -418,9 +488,36 @@ Create a FeedMob line chart showing monthly revenue growth
 
 **Solution**: Specify "following FeedMob logo guidelines" to ensure proper placement and clear space.
 
+## Packaging for Distribution
+
+To create a distributable ZIP file of this skill:
+
+```bash
+# Navigate to the parent directory
+cd /path/to/plugins
+
+# Create ZIP file (ensure folder structure is correct)
+zip -r feedmob-brand-guidelines.zip feedmob-brand-guidelines/ \
+  -x "*.DS_Store" -x "*/.git/*"
+```
+
+The ZIP should contain:
+```
+feedmob-brand-guidelines.zip
+└── feedmob-brand-guidelines/
+    ├── Skill.md
+    ├── README.md
+    └── assets/
+        └── logos/
+            ├── feedmob-logo-black-teal.svg
+            ├── feedmob-logo-white-teal.svg
+            └── feedmob-plus-icon-teal.svg
+```
+
 ## Documentation
 
-- [SKILL.md](skills/SKILL.md) - Complete brand guidelines and technical specifications
+- [Skill.md](Skill.md) - Complete brand guidelines and technical specifications
+- [Official Claude Code Skills Documentation](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)
 
 ## Support
 
@@ -428,19 +525,35 @@ Create a FeedMob line chart showing monthly revenue growth
 - Email: marketing@feedmob.com
 - Review: All external content requires marketing approval
 
-**For Plugin Questions**:
-- Check the SKILL.md for detailed guidelines
+**For Skill Questions**:
+- Check [Skill.md](Skill.md) for detailed guidelines
 - Review examples in this README
 - Consult the official brand guidelines document
+- Visit [Claude Code Skills Documentation](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)
 
 ## Contributing
 
-Improvements to this plugin are welcome! You can:
+Improvements to this skill are welcome! When contributing:
+
+### Development Guidelines
+- Follow the [Claude Code Skills standards](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)
+- Maintain `Skill.md` as the primary skill file in the root directory
+- Keep the YAML frontmatter updated with accurate metadata
+- Test thoroughly before submitting changes
+
+### Contribution Ideas
 - Enhance brand guideline coverage
 - Add more content type templates
-- Improve quality checks
-- Add usage examples
+- Improve quality checks and validation
+- Add usage examples and case studies
+- Update logo assets when new versions are released
 - Provide feedback and suggestions
+
+### Before Submitting
+- Ensure all changes align with FeedMob brand guidelines
+- Update README.md if directory structure changes
+- Test skill activation with various prompts
+- Verify logo assets are working correctly
 
 ---
 
